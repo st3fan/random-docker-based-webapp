@@ -1,0 +1,62 @@
+:root {
+  color-scheme: light;
+  background: #faf3e4;
+  color: #163f36;
+  font-family: "Instrument Serif", Georgia, serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: clamp(1rem, 4vw, 3rem);
+}
+
+main {
+  min-height: calc(100svh - 2 * clamp(1rem, 4vw, 3rem));
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: clamp(1.25rem, 3vh, 2rem);
+  border: 1px solid #788778;
+  outline: 1px solid #a9b09f;
+  outline-offset: -6px;
+  padding: 2rem 1rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(3rem, min(19vw, 23vh), 12rem);
+  line-height: .9;
+  letter-spacing: -.065em;
+  font-weight: 400;
+  text-align: center;
+}
+
+h1 em { color: #aa372b; }
+
+.tulip {
+  position: relative;
+  width: 3rem;
+  height: 4.5rem;
+  background: linear-gradient(#35654b, #35654b) center bottom / 3px 70% no-repeat;
+}
+
+.tulip i {
+  display: block;
+  height: 54%;
+  background: #ca4e38;
+  border-radius: 0 0 50% 50%;
+  clip-path: polygon(0 0, 31% 27%, 50% 0, 69% 27%, 100% 0, 100% 100%, 0 100%);
+}
+
+.tulip::after {
+  content: "";
+  position: absolute;
+  right: 50%;
+  bottom: 0;
+  width: 45%;
+  height: 30%;
+  background: #35654b;
+  border-radius: 0 100% 0 100%;
+}
