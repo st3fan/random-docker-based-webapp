@@ -1,11 +1,14 @@
 package main
 
 import (
-	"io"
+	"embed"
 	"log"
 	"net/http"
 	"os"
 )
+
+//go:embed static/index.html static/style.css
+var assets embed.FS
 
 func main() {
 	port := os.Getenv("PORT")
@@ -15,8 +18,10 @@ func main() {
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("GET /{$}", func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Content-Type", "text/plain; charset=utf-8")
-		io.WriteString(w, "Hello, world!")
+		http.ServeFileFS(w, r, assets, "static/index.html")
+	})
+	mux.HandleFunc("GET /style.css", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFileFS(w, r, assets, "static/style.css")
 	})
 	log.Fatal(http.ListenAndServe(":"+port, mux))
 }

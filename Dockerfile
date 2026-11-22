@@ -1,6 +1,7 @@
 FROM golang:1.27 AS build
 WORKDIR /src
 COPY go.mod main.go ./
+COPY static/ ./static/
 RUN CGO_ENABLED=0 go build -trimpath -o /out/webapp .
 
 FROM scratch
